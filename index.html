@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Характеристики принтеров</title>
+    <script src="printers.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Характеристики принтеров</h1>
+    <table id="printerTable">
+        <thead>
+            <tr>
+                <th>Модель</th>
+                <th>Тип</th>
+                <th>Скорость</th>
+                <th>Расширение</th>
+                <th>Двусторонняя печать</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableBody = document.querySelector('#printerTable tbody');
+            
+            data.sort((a, b) => a.model.localeCompare(b.model));
+            
+            data.forEach(printer => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${printer.model}</td>
+                    <td>${printer.type}</td>
+                    <td>${printer.speed}</td>
+                    <td>${printer.resolution}</td>
+                    <td>${printer.duplex ? 'Yes' : 'No'}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>
